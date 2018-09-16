@@ -1,8 +1,8 @@
-#include <iostream>;
+#include <iostream>
 using namespace std;
 
 /*
-	2 тооны утгуудыг хаяган хувьсагч ашиглан солино
+	2 тооны утгуудыг заалтан хувьсагч ашиглан солино
 
 	Params:
 	int a - утгыг нь солих тоо
@@ -11,14 +11,14 @@ using namespace std;
 	Return:
 	void
 */
-void swap_nums_with_ponter(int *a, int *b)
+void swap_nums_with_refrence(int &a, int &b)
 {
 	// temp-т а-н утгыг хадгална
-	int temp = *a;
+	int temp = a;
 	// а-т b-н утгыг оноож өгнө
-	*a = *b;
+	a = b;
 	// b-m хадгалж авсан а-н утгыг оноож өгнө
-	*b = temp;
+	b = temp;
 }
 
 int main()
@@ -28,7 +28,7 @@ int main()
 	int b = 96;
 
 	// функцээ дуудан ажиллуулах
-	swap_nums_with_ponter(&a, &b);
+	swap_nums_with_refrence(a, b);
 
 	// хоёр тоогоо хэвлэнэ
 	cout << "a: " << a << endl;
