@@ -1,12 +1,12 @@
-#include <iostream>;
+#include <iostream>
 using namespace std;
 
 /*
 	2 тооны утгуудыг хаяган хувьсагч ашиглан солино
 
 	Params:
-	int a - утгыг нь солих тоо
-	int b - утгыг нь солих тоо
+	int *a - утгыг нь солих тооны хаяг
+	int *b - утгыг нь солих тоона хаяг
 
 	Return:
 	void
