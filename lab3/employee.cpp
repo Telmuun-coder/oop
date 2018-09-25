@@ -1,6 +1,15 @@
 #include "./employee.h"
 #include <string.h>
 
+/*
+    Гишүүн ажилчинд анхны утга оноож өгнө
+
+    Params:
+    void
+
+    Return:
+    void
+*/
 void employee::init()
 {
     id = 0;
@@ -9,6 +18,15 @@ void employee::init()
     worked_hour = 0.0;
 }
 
+/*
+    Гишүүн ажилчны мэдээлэлийг дэлгэцэнд хэвлэнэ
+
+    Params:
+    void
+
+    Return:
+    void
+*/
 void employee::print()
 {
     cout << "Id: " << id << endl;
@@ -17,9 +35,17 @@ void employee::print()
     cout << "Wordked hours: " << worked_hour << endl;
 }
 
+/*
+    Гишүүн ажилчны мэдээлэл
+
+    Params:
+    void
+
+    Return:
+    void
+*/
 void employee::read()
 {
-
     cout << "Ajilchingiin Idiig oruul: " << endl;
     cin >> id;
     cout << "Ajilchingiin Neriig oruul: " << endl;
@@ -28,6 +54,15 @@ void employee::read()
     cin >> position;
 }
 
+/*
+    Гишүүн ажилчны цалинг ажилласан цагаар нь бодож буцаана.
+
+    Params:
+    void
+
+    Return:
+    void
+*/
 float employee::calculate_salary()
 {
     float salary = worked_hour * 100;
@@ -38,11 +73,29 @@ float employee::calculate_salary()
     return salary;
 }
 
+/*
+    Захирлын цалинг бодох
+
+    Params:
+    void
+
+    Return:
+    void
+*/
 float employee::calculate_salary_ceo()
 {
     return worked_hour * 50;
 }
 
+/*
+    Гишүүн ажилчны ажилласан цагийг нэмнэ
+
+    Params:
+    float hour - Ажилчингын ажилсн цаг
+
+    Return:
+    bool - Зөв утга уруулсан үед 1 бусад үед 0
+*/
 bool employee::add_worked_hour(float hour)
 {
     if (hour > 0 && hour < 24)
