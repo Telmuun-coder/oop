@@ -45,6 +45,62 @@ employee::~employee()
 }
 
 /*
+*/
+int employee::get_id()
+{
+	return id;
+}
+
+/*
+*/
+char *employee::get_name()
+{
+	return name;
+}
+
+/*
+*/
+char *employee::get_postion()
+{
+	return position;
+}
+
+/*
+*/
+float employee::get_worked_wour()
+{
+	return worked_hour;
+}
+
+/*
+*/
+void employee::set_id(int e_id)
+{
+	id = e_id;
+}
+
+/*
+*/
+void employee::set_name(char e_name[])
+{
+	strcpy(name, e_name);
+}
+
+/*
+*/
+void employee::set_position(char e_position[])
+{
+	strcpy(position, e_position);
+}
+
+/*
+*/
+void employee::set_worked_wour(float e_worked_hour)
+{
+	worked_hour = e_worked_hour;
+}
+
+/*
     Гишүүн ажилчинд анхны утга оноож өгнө
 
     Params:

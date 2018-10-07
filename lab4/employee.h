@@ -27,6 +27,39 @@ class employee
 
 	*/
 	~employee();
+
+	/*
+	*/
+	int get_id();
+
+	/*
+	*/
+	char *get_name();
+
+	/*
+	*/
+	char *get_postion();
+
+	/*
+	*/
+	float get_worked_wour();
+
+	/*
+	*/
+	void set_id(int e_id);
+
+	/*
+	*/
+	void set_name(char e_name[]);
+
+	/*
+	*/
+	void set_position(char e_position[]);
+
+	/*
+	*/
+	void set_worked_wour(float e_worked_hour);
+
 	/*
 		Гишүүн ажилчинд анхны утга оноож өгнө
 
