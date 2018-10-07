@@ -6,23 +6,90 @@ class employee
 	// Гишүүн ажилчны дугаар
 	int id;
 	// Гишүүн ажилчны нэр
-	char name[20];
+	char *name;
 	// Гишүүн ажилчны албан тушаал
-	char position[20];
+	char *position;
 	// Гишүүн ажилчны ажилсан цаг
 	float worked_hour;
 
   public:
-	// Гишүүн ажилчинд анхны утга оноож үүсгэнэ.
+	/*
+
+	*/
+	employee();
+
+	/*
+
+	*/
+	employee(int id);
+
+	/*
+
+	*/
+	~employee();
+	/*
+		Гишүүн ажилчинд анхны утга оноож өгнө
+
+		Params:
+		void
+
+		Return:
+		void
+	*/
 	void init();
-	// Гишүүн ажилчны мэдээлэл дэлгэцэнд хэвлэх
+
+	/*
+		Гишүүн ажилчны мэдээлэлийг дэлгэцэнд хэвлэнэ
+
+		Params:
+		void
+
+		Return:
+		void
+	*/
 	void print();
-	// Гишүүн ажилчны мэдээлэл
+
+	/*
+		Гишүүн ажилчны мэдээлэл
+
+		Params:
+		void
+
+		Return:
+		void
+	*/
 	void read();
-	// Гишүүн ажилчны цалинг ажилласан цагаар нь бодож буцаана.
+
+	/*
+		Гишүүн ажилчны цалинг ажилласан цагаар нь бодож буцаана.
+
+		Params:
+		void
+
+		Return:
+		void
+	*/
 	float calculate_salary();
-	// Захирлын цалинг бодох
+
+	/*
+		Захирлын цалинг бодох
+
+		Params:
+		void
+
+		Return:
+		void
+	*/
 	float calculate_salary_ceo();
-	// Гишүүн ажилчны ажилласан цагийг нэмнэ
+
+	/*
+		Гишүүн ажилчны ажилласан цагийг нэмнэ
+
+		Params:
+		float hour - Ажилчингын ажилсн цаг
+
+		Return:
+		bool - Зөв утга уруулсан үед 1 бусад үед 0
+	*/
 	bool add_worked_hour(float hour);
 };
