@@ -72,17 +72,6 @@ class employee
 	float calculate_salary();
 
 	/*
-		Захирлын цалинг бодох
-
-		Params:
-		void
-
-		Return:
-		void
-	*/
-	float calculate_salary_ceo();
-
-	/*
 		Гишүүн ажилчны ажилласан цагийг нэмнэ
 
 		Params:
@@ -92,4 +81,16 @@ class employee
 		bool - Зөв утга уруулсан үед 1 бусад үед 0
 	*/
 	bool add_worked_hour(float hour);
+
+  private:
+	/*
+		Захирлын цалинг бодох
+
+		Params:
+		void
+
+		Return:
+		void
+	*/
+	float calculate_salary_ceo();
 };
