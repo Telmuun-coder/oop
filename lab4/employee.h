@@ -21,7 +21,7 @@ class employee
 	/*
 
 	*/
-	employee::employee(int e_id, char e_name[], char e_position[]);
+	employee(int e_id, char e_name[], char e_position[]);
 
 	/*
 
