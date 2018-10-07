@@ -2,24 +2,31 @@
 
 int main()
 {
-    // Ажилчин төрлйин emp гэсэн объект байгуулна
-    employee emp;
-    
-    // Ажилчин объект emp-р дамжуулан init функцийг дуудна
-    emp.init();
-    // Ажилчин объект emp-р дамжуулан read функцийг дуудна
-    emp.read();
+	const int array_size = 3;
+	// 3 ажилчинтай ажилчин хүснэгт үүсэгсэн
+	employee emp_array[array_size];
 
-    // Гишүүн ажилчны ажилсан цагийг хадаглах бодит тоон хувьсагч зарлана 
-    float hour;
-    // Гишүүн ажилчны ажилсан цагийг гараас оруулна
-    cin >> hour;
-    // Гишүүн ажилчны ажилсан цагийг add_worked_hour-г ашиглна нэмнэ emp объектын ажилсан цаг дээр нэмнэ
-    emp.add_worked_hour(hour);
+	// emp_array-д for давтал ашигал read болон add_worked_hour функцийг дуудан
+	// утга гараас оноож байна
+	for (int emp_index = 0; emp_index < array_size; emp_index++)
+	{
+		// Ажилсан цагийг хадаглах бодит тоон хувьсагч
+		float hours;
 
-    // Ажилчин объект emp-р дамжуулан calculate_salary функцийг ашиглан  хэвлэнэ
-    cout << emp.calculate_salary() << endl;
+		cout << emp_index + 1 << " => " << endl;
+		emp_array[emp_index].read();
+		// Гараас утга авч hours-т оноож байна
+		cout << "Ajilsan tsagiig oruul: ";
+		cin >> hours;
+		cout << endl;
+		emp_array[emp_index].add_worked_hour(hours);
+	}
 
-    // Ажилчин объект emp-р дамжуулан print функцийг ашиглан emp объектын мэдээллийг хэвлэнэ
-    emp.print();
+	employee::sort_employee_by_salary(emp_array, array_size);
+
+	// emp_array for давтал ашиглан print функцийш дуудан мэдээлэлийг дэлгэцнд хэлэж байна.
+	for (int emp_index = 0; emp_index < array_size; emp_index++)
+	{
+		emp_array[emp_index].print();
+	}
 }

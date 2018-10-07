@@ -83,7 +83,7 @@ class employee
 	void print();
 
 	/*
-		Гишүүн ажилчны мэдээлэл
+		Гишүүн ажилчны мэдээлэлийг гараас авна
 
 		Params:
 		void
@@ -114,6 +114,17 @@ class employee
 		bool - Зөв утга уруулсан үед 1 бусад үед 0
 	*/
 	bool add_worked_hour(float hour);
+
+	/*
+		Ажилчин хүснэгтийг цалингаар нь багаас ихруу эрэмблэх
+
+		Params:
+		employee employee_array[] - Эрэмблэх ажилчин хүснэгт
+
+		Return:	
+		employee *array - Эрэмблэгдсэн хүснэгтийн эхний элементийн хаяг
+	*/
+	static void sort_employee_by_salary(employee *emp_array, int emp_array_lenght);
 
   private:
 	/*
