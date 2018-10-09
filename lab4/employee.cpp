@@ -60,7 +60,7 @@ char *employee::get_name()
 
 /*
 */
-char *employee::get_postion()
+char *employee::get_position()
 {
 	return position;
 }
@@ -262,7 +262,7 @@ void employee::sort_employee_by_salary(employee *emp_array, int emp_array_lenght
 		char min_name[strlen(emp_array[min_index].name)];
 		strcpy(min_name, emp_array[min_index].get_name());
 		char min_position[strlen(emp_array[min_index].position)];
-		strcpy(min_position, emp_array[min_index].get_postion());
+		strcpy(min_position, emp_array[min_index].get_position());
 		int min_worked_hour = emp_array[min_index].worked_hour;
 
 		swap(emp_salary_array[min_index], emp_salary_array[emp_index]);
