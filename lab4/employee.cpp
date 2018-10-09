@@ -246,6 +246,7 @@ void employee::sort_employee_by_salary(employee *emp_array, int emp_array_lenght
 	// selection sort ашиглан цалингийн хүснэгтээ эрэмбэх мөн харгалзах ажилчидыг байрын солино.
 	for (int emp_index = 0; emp_index < emp_array_lenght - 1; emp_index++)
 	{
+		// Хамгийн бага гэж үзэж буй цалин болон индекс
 		int min_salary = emp_salary_array[emp_index];
 		int min_index = emp_index;
 
@@ -263,7 +264,7 @@ void employee::sort_employee_by_salary(employee *emp_array, int emp_array_lenght
 		strcpy(min_name, emp_array[min_index].get_name());
 		char min_position[strlen(emp_array[min_index].position)];
 		strcpy(min_position, emp_array[min_index].get_position());
-		int min_worked_hour = emp_array[min_index].worked_hour;
+		float min_worked_hour = emp_array[min_index].worked_hour;
 
 		swap(emp_salary_array[min_index], emp_salary_array[emp_index]);
 		if (min_index != emp_index)
