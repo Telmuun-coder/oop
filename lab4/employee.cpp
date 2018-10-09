@@ -67,7 +67,7 @@ char *employee::get_postion()
 
 /*
 */
-float employee::get_worked_wour()
+float employee::get_worked_hour()
 {
 	return worked_hour;
 }
@@ -111,7 +111,7 @@ void employee::set_position(char e_position[])
 
 /*
 */
-void employee::set_worked_wour(float e_worked_hour)
+void employee::set_worked_hour(float e_worked_hour)
 {
 	worked_hour = e_worked_hour;
 }
