@@ -271,12 +271,12 @@ void employee::sort_employee_by_salary(employee *emp_array, int emp_array_lenght
 			emp_array[min_index].set_id(emp_array[emp_index].id);
 			emp_array[min_index].set_name(emp_array[emp_index].name);
 			emp_array[min_index].set_position(emp_array[emp_index].position);
-			emp_array[min_index].set_worked_wour(emp_array[emp_index].worked_hour);
+			emp_array[min_index].set_worked_hour(emp_array[emp_index].worked_hour);
 
 			emp_array[emp_index].set_id(min_id);
 			emp_array[emp_index].set_name(min_name);
 			emp_array[emp_index].set_position(min_position);
-			emp_array[emp_index].set_worked_wour(min_worked_hour);
+			emp_array[emp_index].set_worked_hour(min_worked_hour);
 		}
 	}
 }

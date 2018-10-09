@@ -22,7 +22,7 @@ int main()
 		emp_array[emp_index].add_worked_hour(hours);
 	}
 
-	employee::sort_employee_by_salary(emp_array, array_size);
+	emp_array[0].sort_employee_by_salary(emp_array, array_size);
 
 	// emp_array for давтал ашиглан print функцийш дуудан мэдээлэлийг дэлгэцнд хэлэж байна.
 	for (int emp_index = 0; emp_index < array_size; emp_index++)
