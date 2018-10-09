@@ -232,7 +232,7 @@ bool employee::add_worked_hour(float hour)
 	Return:	
 	employee *array - Эрэмблэгдсэн хүснэгтийн эхний элементийн хаяг
 */
-void employee::sort_employee_by_salary(employee *emp_array, int emp_array_lenght)
+void employee::	(employee *emp_array, int emp_array_lenght)
 {
 	// Ажилчдийн цалинг хадаглах хүснэгт
 	float emp_salary_array[emp_array_lenght];
@@ -250,6 +250,7 @@ void employee::sort_employee_by_salary(employee *emp_array, int emp_array_lenght
 		int min_salary = emp_salary_array[emp_index];
 		int min_index = emp_index;
 
+		// Хамгийн бага цалинтай ажилчинг олно
 		for (int emp_cpm_index = emp_index; emp_cpm_index < emp_array_lenght; emp_cpm_index++)
 		{
 			if (min_salary > emp_salary_array[emp_cpm_index])
@@ -259,6 +260,7 @@ void employee::sort_employee_by_salary(employee *emp_array, int emp_array_lenght
 			}
 		}
 
+		// Хамгийн бага цалинтай индексэй ажилчингий утгуудыг хадглана
 		int min_id = emp_array[min_index].id;
 		char min_name[strlen(emp_array[min_index].name)];
 		strcpy(min_name, emp_array[min_index].get_name());
@@ -266,9 +268,12 @@ void employee::sort_employee_by_salary(employee *emp_array, int emp_array_lenght
 		strcpy(min_position, emp_array[min_index].get_position());
 		float min_worked_hour = emp_array[min_index].worked_hour;
 
-		swap(emp_salary_array[min_index], emp_salary_array[emp_index]);
 		if (min_index != emp_index)
 		{
+			// Хамгийн бага цалинтай ажилчинтай emp_index ийн ажилчиг солно
+			// цалингийн хүснэгтийн утгуудыг солиж байна
+			swap(emp_salary_array[min_index], emp_salary_array[emp_index]);
+			// ажилчин хүснэгтийн хоёр ажилчинг солиж байна
 			emp_array[min_index].set_id(emp_array[emp_index].id);
 			emp_array[min_index].set_name(emp_array[emp_index].name);
 			emp_array[min_index].set_position(emp_array[emp_index].position);
