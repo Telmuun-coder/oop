@@ -26,6 +26,11 @@ class employee
 	*/
 	employee();
 
+    /*
+     
+    */
+    employee(const employee &emp);
+
 	/*
 		Параметртэй байгуулагч функц. Параметрийн дагуу объектд анхны утгууд оноож, санах ой нөөцлөнө
 
@@ -34,7 +39,7 @@ class employee
 		char e_name[] - шинээр үүсгэж буй ажилчингийн нэр
 		char e_position[] - шинээр үүсгэж буй ажилчингийн албан тушаал
 	*/
-	employee(int e_id, char e_name[], char e_position[]);
+	employee(int e_id, const char e_name[], const char e_position[]);
 	
 
 	/*
@@ -109,7 +114,7 @@ class employee
 		Return:
 		void
 	*/
-	void set_name(char e_name[]);
+	void set_name(const char e_name[]);
 
 	/*
 		Гишүүн ажилчингийн албан тушаалыг өөрчилнө
@@ -120,7 +125,7 @@ class employee
 		Return:
 		void
 	*/
-	void set_position(char e_position[]);
+	void set_position(const char e_position[]);
 
 	/*
 		Гишүүн ажилчингийн ажилласан цагийг өөрчилнө
