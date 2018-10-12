@@ -198,11 +198,24 @@ class employee
 
 		Params:
 		employee employee_array[] - Эрэмблэх ажилчин хүснэгт
+        int emp_array_length - эрэмблэх ажилчин хүснэгтийн урт
 
 		Return:	
-		employee *array - Эрэмблэгдсэн хүснэгтийн эхний элементийн хаяг
+        void
 	*/
 	void sort_employee_by_salary(employee *emp_array[], int emp_array_lenght);
+
+    /*
+		Ажилчин хүснэгтийг нэрээр нь эрэмблэх
+
+		Params:
+		employee employee_array[] - Эрэмблэх ажилчин хүснэгт
+        int emp_array_length - эрэмблэх ажилчин хүснэгтийн урт
+
+		Return:	
+        void
+    */
+    void sort_employee_by_name(employee **emp_array, int emp_array_length);
 
   private:
 	/*

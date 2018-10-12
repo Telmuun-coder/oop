@@ -22,7 +22,7 @@ int main()
 
     for (int emp_index = 0; emp_index < NUMBER_OF_EMPLOYEE; emp_index++)
     {
-        cout << emp_array[emp_index]->get_id() << endl;;
+        emp_array[emp_index]->print();
     }
     return 0;
 }
