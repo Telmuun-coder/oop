@@ -1,6 +1,3 @@
-#ifndef EMPPLOYEE_H
-#define EMPPLOYEE_H
-
 #include "./employee.h"
 #include <string.h>
 
@@ -29,12 +26,12 @@ employee::employee(const employee &emp)
 /*
 
 */
-employee::employee(int e_id, const char e_name[], const char e_position[])
+employee::employee(int e_id, const char e_name[], const char e_position[], float e_worked_hour)
 {
     this->set_id(e_id);
     this->set_name(e_name);
     this->set_position(e_position);
-    this->set_worked_hour(0.0);
+    this->set_worked_hour(e_worked_hour);
 }
 
 /*
@@ -78,7 +75,6 @@ float employee::get_worked_hour()
 */
 void employee::set_id(int e_id)
 {
-
 	id = e_id;
 }
 
@@ -222,8 +218,29 @@ bool employee::add_worked_hour(float hour)
 	Return:	
 	employee *array - Эрэмблэгдсэн хүснэгтийн эхний элементийн хаяг
 */
-void employee::sort_employee_by_salary(employee *emp_array, int emp_array_lenght)
+void employee::sort_employee_by_salary(employee *emp_array[], int emp_array_lenght)
 {
-}
+    for (int i = 0; i < emp_array_lenght; i++)
+    {
+        cout << "I: " <<  type_info(emp_array) << endl;
+    }
+//    for (int emp_index = 0; emp_index < emp_array_lenght - 1; emp_index++)
+//    {
+//        float min_salary = emp_array[emp_index].calculate_salary();
+//        int min_index = 0;
+//        
+//        for(int emp_cmp_index = emp_index; emp_cmp_index < emp_array_lenght; emp_cmp_index++)
+//        {
+//            if (min_salary > emp_array[emp_cmp_index].calculate_salary() )
+//            {
+//                min_salary = emp_array[emp_cmp_index].calculate_salary();
+//                min_index = emp_cmp_index;
+//            }
+//        }
 
-#endif
+   //     employee temp(*emp_array[min_index]);
+
+   //     emp_array[min_index] = emp_array[emp_index];
+   //     emp_array[emp_index] = &temp;
+//    }
+}

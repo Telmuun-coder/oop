@@ -39,7 +39,7 @@ class employee
 		char e_name[] - шинээр үүсгэж буй ажилчингийн нэр
 		char e_position[] - шинээр үүсгэж буй ажилчингийн албан тушаал
 	*/
-	employee(int e_id, const char e_name[], const char e_position[]);
+	employee(int e_id, const char e_name[], const char e_position[], float e_worked_hour = 0.0);
 	
 
 	/*
@@ -202,7 +202,7 @@ class employee
 		Return:	
 		employee *array - Эрэмблэгдсэн хүснэгтийн эхний элементийн хаяг
 	*/
-	void sort_employee_by_salary(employee *emp_array, int emp_array_lenght);
+	void sort_employee_by_salary(employee *emp_array[], int emp_array_lenght);
 
   private:
 	/*
