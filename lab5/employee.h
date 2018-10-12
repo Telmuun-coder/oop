@@ -1,7 +1,15 @@
+#ifndef EMPPLOYEE_H
+#define EMPPLOYEE_H
+
 #include <iostream>
+
 using namespace std;
 class employee
 {
+  public:
+    // Ажилчингийн нийт тоо
+    static int number_of_employee;
+
   private:
 	// Гишүүн ажилчны дугаар
 	int id;
@@ -27,7 +35,10 @@ class employee
 	employee();
 
     /*
-     
+        Хуудагч байгуулагч нэг ажилчингий мэдээлэлийг нөгөө ажилчинд өгнө
+
+        Param:
+        employee &emp - Хуулах ажилчингийн хаяг
     */
     employee(const employee &emp);
 
@@ -39,17 +50,26 @@ class employee
 		char e_name[] - шинээр үүсгэж буй ажилчингийн нэр
 		char e_position[] - шинээр үүсгэж буй ажилчингийн албан тушаал
 	*/
-	employee(int e_id, const char e_name[], const char e_position[], float e_worked_hour = 0.0);
+	employee(const char e_name[], const char e_position[], float e_worked_hour = 0.0);
 	
 
 	/*
 		Устгагч функц
 
 		ажилчингийн new гээр нөөцөлсөн name, position-г delete оператор ашиглан чөлөөлнө.
-		Түүний дараа утсаж буй ажилчинд "Goodbye [name]!" гэж хэвлэнэ.
 	*/
 	~employee();
 
+    /*
+        Ажилчдын тоог буцааж өгнө
+
+		Params:
+		void
+
+		Return:
+		void
+    */
+    static int get_number_of_employee();
 	/*
 		Гишүүн ажилчингийн дугаарыг буцааж өгнө
 
@@ -95,17 +115,6 @@ class employee
 	float get_worked_hour();
 
 	/*
-		Гишүүн ажилчингийн дугаарыг өөрчилнө
-
-		Params:
-		int e_id - шинээр өөрчлөх гишүүн ажилчингийн дугаар
-
-		Return:
-		void
-	*/
-	void set_id(int e_id);
-
-	/*
 		Гишүүн ажилчингийн нэрийг өөрчилнө
 
 		Params:
@@ -139,17 +148,6 @@ class employee
 	void set_worked_hour(float e_worked_hour);
 
 	/*
-		Гишүүн ажилчинд анхны утга оноож өгнө
-
-		Params:
-		void
-
-		Return:
-		void
-	*/
-	void init();
-
-	/*
 		Гишүүн ажилчны мэдээлэлийг дэлгэцэнд хэвлэнэ
 
 		Params:
@@ -159,17 +157,6 @@ class employee
 		void
 	*/
 	void print();
-
-	/*
-		Гишүүн ажилчны мэдээлэлийг гараас авна
-
-		Params:
-		void
-
-		Return:
-		void
-	*/
-	void read();
 
 	/*
 		Гишүүн ажилчны цалинг ажилласан цагаар нь бодож буцаана.
@@ -228,4 +215,28 @@ class employee
 		void
 	*/
 	float calculate_salary_ceo();
+
+    /*
+       Ажилчингий тоог нэгээр ихэсгэх
+
+		Params:
+		void
+
+		Return:
+		void
+    */
+    static void inc_number_of_employee();
+
+	/*
+		Гишүүн ажилчингийн дугаарыг өөрчилнө
+
+		Params:
+		int e_id - шинээр өөрчлөх гишүүн ажилчингийн дугаар
+
+		Return:
+		void
+	*/
+	void set_id(int e_id);
 };
+
+#endif
