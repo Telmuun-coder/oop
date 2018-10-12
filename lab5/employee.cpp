@@ -2,12 +2,12 @@
 #include <string.h>
 
 // Static ажилчингийн тоонд анхны утга оноож байна
-int employee::number_of_employee = 0;
+int employee::id_number = 0;
 
 employee::employee()
 {
-    employee::inc_number_of_employee();
-    this->set_id(number_of_employee);
+    employee::inc_id_number();
+    this->set_id(id_number);
     this->set_name("Default");
 	this->set_position("Employee");
     this->set_worked_hour(0.0);
@@ -23,8 +23,8 @@ employee::employee(const employee &emp)
 
 employee::employee(const char e_name[], const char e_position[], float e_worked_hour)
 {
-    employee::inc_number_of_employee();
-    this->set_id(number_of_employee);
+    employee::inc_id_number();
+    this->set_id(id_number);
     this->set_name(e_name);
     this->set_position(e_position);
     this->set_worked_hour(e_worked_hour);
@@ -36,9 +36,9 @@ employee::~employee()
 	delete[] position;
 }
 
-void employee::inc_number_of_employee()
+void employee::inc_id_number()
 {
-    number_of_employee++;
+    id_number++;
 }
 
 int employee::get_id()

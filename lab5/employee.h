@@ -8,7 +8,7 @@ class employee
 {
   public:
     // Ажилчингийн нийт тоо
-    static int number_of_employee;
+    static int id_number;
 
   private:
 	// Гишүүн ажилчны дугаар
@@ -69,7 +69,7 @@ class employee
 		Return:
 		void
     */
-    static int get_number_of_employee();
+    static int get_id_number();
 	/*
 		Гишүүн ажилчингийн дугаарыг буцааж өгнө
 
@@ -225,7 +225,7 @@ class employee
 		Return:
 		void
     */
-    static void inc_number_of_employee();
+    static void inc_id_number();
 
 	/*
 		Гишүүн ажилчингийн дугаарыг өөрчилнө
