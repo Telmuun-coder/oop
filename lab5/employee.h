@@ -7,7 +7,7 @@ using namespace std;
 class employee
 {
   public:
-    // Ажилчингийн нийт тоо
+    // Ажилчны нийт тоо
     static int id_number;
 
   private:
@@ -23,7 +23,6 @@ class employee
   public:
 	/*
 		Анхдагч байгуулагч функц
-		id-т 0
 		name-т Default
 		position-т Employee
 		worked_hour-т 0.0
@@ -217,7 +216,7 @@ class employee
 	float calculate_salary_ceo();
 
     /*
-       Ажилчингий тоог нэгээр ихэсгэх
+ 		Ажилчидын тоог нэгээр ихэсгэх
 
 		Params:
 		void
@@ -228,7 +227,7 @@ class employee
     static void inc_id_number();
 
 	/*
-		Гишүүн ажилчингийн дугаарыг өөрчилнө
+		Гишүүн ажилчны дугаарыг өөрчилнө
 
 		Params:
 		int e_id - шинээр өөрчлөх гишүүн ажилчингийн дугаар
