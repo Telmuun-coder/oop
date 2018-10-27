@@ -2,36 +2,39 @@
 #define MATRIX_H
 
 class Matrix {
-    private:
-        int column;
-        int row;
-        float values[][];
-    
-    public:
-        Matrix();
-        Matrix(int column = 1, int row = 1);
-        
-        // Set
-        void set_column(int column);
-        void set_row(int row);
-        void set_value(int row, int column, int value);
-        
-        // Get
-        int get_column();
-        int get_row();
-        float get_value(int row, int column);
-        
-        // Operator
-        Matric & operator + (const Matrix &addition);
-        Matric & operator - (const Matrix &subtraction);
-        Matric & operator * (const Matrix &multiplication);
-        Matric & operator = (const Matrix &assign);
-        void & operator ++ (const Matrix &increment);
-        void & operator -- (const Matrix &decrement);
-        void & operator += (const Matrix &addition);
-        void & operator -= (const Matrix &subtraction);
-        void & operator *= (const Matrix &multiplication);
-        float & operator [][] (int row, int column);
+   private:
+    int column;
+    int row;
+    float **values;
+    void constructor(void);
+
+   public:
+    Matrix();
+    Matrix(int column, int row);
+    Matrix(int column, int row, float **values, int values_row_size, int values_col_size);
+    ~Matrix();
+
+    // Set
+    void set_column(int column);
+    void set_row(int row);
+    void set_value(int row, int column, int value);
+
+    // Get
+    int get_column(void);
+    int get_row(void);
+    float get_value(int row, int column);
+
+    // Operator
+    Matrix operator+(const Matrix &addition);
+    Matrix operator-(const Matrix &subtraction);
+    Matrix operator*(const Matrix &multiplication);
+    Matrix &operator=(const Matrix &assign);
+    void operator++(void);
+    void operator--(void);
+    Matrix &operator+=(const Matrix &addition);
+    Matrix &operator-=(const Matrix &subtraction);
+    Matrix &operator*=(const Matrix &multiplication);
+    float *operator[](int row);
 };
 
-#endif MATRIX_H
+#endif
