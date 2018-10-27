@@ -7,5 +7,10 @@ int main() {
     float *arr[2] = {a1, a2};
     Matrix a(2, 2, arr, 2, 2);
 
+    int x = 1;
+    int y;
+
+    y = &x;
+
     return 0;
 }

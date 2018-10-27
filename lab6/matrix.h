@@ -28,9 +28,19 @@ class Matrix {
     Matrix operator+(const Matrix &addition);
     Matrix operator-(const Matrix &subtraction);
     Matrix operator*(const Matrix &multiplication);
+    // Байгаа зүйл дээр өөрчилөлт явгзаж байгаа тул refrence буцаана
+    // 1. Илүү хурдан болно
+    // Шинээр local хувьсагч үүсгэхгүй дуудагдсан матриц дээр үйлдэл хийгээд түүнийгээ буцаана
+    // return *this; буцах утга нь & учир өөрчилөгдсөн марицийн хаягийш буцаана
+    /*
+    Matrix a;
+    b = a++;
+    // Хэрэв шинээр үүсгээд түүнийхээ утгыг буцаах үед
+    local учир функц дуусахад устаад ctor return хийх үед ажилна
+    */
     Matrix &operator=(const Matrix &assign);
-    void operator++(void);
-    void operator--(void);
+    Matrix &operator++(void);
+    Matrix &operator--(void);
     Matrix &operator+=(const Matrix &addition);
     Matrix &operator-=(const Matrix &subtraction);
     Matrix &operator*=(const Matrix &multiplication);
