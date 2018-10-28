@@ -1,6 +1,10 @@
 #ifndef MATRIX_H
 #define MATRIX_H
-
+// const https://stackoverflow.com/questions/28987916/cannot-call-a-method-of-const-reference-parameter-in-c
+// function return as refrence https://www.programiz.com/cpp-programming/return-reference
+// Operator overload https://en.cppreference.com/w/cpp/language/operators
+// Matrix https://www.mathwarehouse.com/algebra/matrix/multiply-matrix.php
+// Post vs pre fix https://stackoverflow.com/questions/8006264/post-increment-in-operator-overloading-in-c
 class Matrix {
    private:
     int column;
@@ -20,12 +24,14 @@ class Matrix {
     void set_value(int row, int column, int value);
 
     // Get
-    int get_column(void);
-    int get_row(void);
-    float get_value(int row, int column);
+    int get_column(void) const;
+    int get_row(void) const;
+    float get_value(int row, int column) const;
 
     // Operator
-    Matrix operator+(const Matrix &addition);
+    bool check_for_add_and_sub(int row_1, int col_1, int row_2, int col_2);
+    bool check_for_mul(int col_1, int row_2);
+    Matrix operator+(Matrix const &addition);
     Matrix operator-(const Matrix &subtraction);
     Matrix operator*(const Matrix &multiplication);
     // Байгаа зүйл дээр өөрчилөлт явгзаж байгаа тул refrence буцаана
@@ -39,12 +45,12 @@ class Matrix {
     local учир функц дуусахад устаад ctor return хийх үед ажилна
     */
     Matrix &operator=(const Matrix &assign);
-    Matrix &operator++(void);
-    Matrix &operator--(void);
+    Matrix &operator++(int);
+    Matrix &operator--(int);
     Matrix &operator+=(const Matrix &addition);
     Matrix &operator-=(const Matrix &subtraction);
     Matrix &operator*=(const Matrix &multiplication);
-    float *operator[](int row);
+    float *operator[](int row) const;
 };
 
 #endif
