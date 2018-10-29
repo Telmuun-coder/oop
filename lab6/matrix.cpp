@@ -76,7 +76,7 @@ void Matrix::set_row(int row) {
     this->row = row;
 }
 
-void Matrix::set_value(int row, int column, int value) {
+void Matrix::set_value(int row, int column, float value) {
     this->values[row][column] = value;
 }
 

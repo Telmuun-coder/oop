@@ -15,8 +15,5 @@ int main() {
 
     a *= b;
 
-    std::cout
-        << std::endl;
-
     return 0;
 }
