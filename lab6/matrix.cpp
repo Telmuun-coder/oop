@@ -1,5 +1,7 @@
 #include "./matrix.h"
 
+#include <iostream>
+
 void Matrix::constructor(void) {
     // Матрицид мөр баганы хэмжээгээр санах ой нөөцөлж байна
     this->values = new float *[this->row];
@@ -190,34 +192,20 @@ Matrix &Matrix::operator++(int) {
 Matrix &Matrix::operator--(int) {
     for (int i = 0; i < this->row; i++) {
         for (int j = 0; j < this->column; j++) {
-            this->set_value(i, j, this->values[i][j] + 1);
+            this->set_value(i, j, this->values[i][j] - 1);
         }
     }
     return *this;
 }
 Matrix &Matrix::operator+=(const Matrix &addition) {
-    for (int i = 0; i < this->row; i++) {
-        for (int j = 0; j < this->column; j++) {
-            this->set_value(i, j, this->values[i][j] + addition.values[i][j]);
-        }
-    }
+	*this = *this + addition;
     return *this;
 }
 Matrix &Matrix::operator-=(const Matrix &subtraction) {
-    for (int i = 0; i < this->row; i++) {
-        for (int j = 0; j < this->column; j++) {
-            this->set_value(i, j, this->values[i][j] + subtraction.values[i][j]);
-        }
-    }
+	*this = *this - subtraction;
     return *this;
 }
 Matrix &Matrix::operator*=(const Matrix &multiplication) {
-    for (int i = 0; i < this->row; i++) {
-        for (int j = 0; j < multiplication.column; j++) {
-            for (int k = 0; k < this->column; k++) {
-                this->set_value(i, j, this->values[i][k] * multiplication[k][j]);
-            }
-        }
-    }
+	*this = *this * multiplication;
     return *this;
 }
