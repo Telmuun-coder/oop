@@ -1,20 +1,18 @@
 #include "./employee.h"
 #include <string.h>
 
-/*
+// Static ажилчингийн тоонд анхны утга оноож байна
+int employee::id_number = 0;
 
-*/
 employee::employee()
 {
-    this->set_id(0);
+    employee::inc_id_number();
+    this->set_id(id_number);
     this->set_name("Default");
 	this->set_position("Employee");
     this->set_worked_hour(0.0);
 }
 
-/*  Copy constructor
- *  
- */
 employee::employee(const employee &emp)
 {
     this->set_id(emp.id);
@@ -23,63 +21,51 @@ employee::employee(const employee &emp)
     this->set_worked_hour(emp.worked_hour);
 }
 
-/*
-
-*/
-employee::employee(int e_id, const char e_name[], const char e_position[], float e_worked_hour)
+employee::employee(const char e_name[], const char e_position[], float e_worked_hour)
 {
-    this->set_id(e_id);
+    employee::inc_id_number();
+    this->set_id(id_number);
     this->set_name(e_name);
     this->set_position(e_position);
     this->set_worked_hour(e_worked_hour);
 }
 
-/*
-
-*/
 employee::~employee()
 {
 	delete[] name;
 	delete[] position;
 }
 
-/*
-*/
+void employee::inc_id_number()
+{
+    id_number++;
+}
+
 int employee::get_id()
 {
 	return id;
 }
 
-/*
-*/
 char *employee::get_name()
 {
 	return name;
 }
 
-/*
-*/
 char *employee::get_position()
 {
 	return position;
 }
 
-/*
-*/
 float employee::get_worked_hour()
 {
 	return worked_hour;
 }
 
-/*
-*/
 void employee::set_id(int e_id)
 {
 	id = e_id;
 }
 
-/*
-*/
 void employee::set_name(const char e_name[])
 {
     if (name != nullptr)
@@ -98,8 +84,6 @@ void employee::set_name(const char e_name[])
 	strcpy(name, e_name);
 }
 
-/*
-*/
 void employee::set_position(const char e_position[])
 {
     if (position != nullptr)
@@ -118,22 +102,11 @@ void employee::set_position(const char e_position[])
 	strcpy(position, e_position);
 }
 
-/*
-*/
 void employee::set_worked_hour(float e_worked_hour)
 {
 	worked_hour = e_worked_hour;
 }
 
-/*
-    Гишүүн ажилчны мэдээлэлийг дэлгэцэнд хэвлэнэ
-
-    Params:
-    void
-
-    Return:
-    void
-*/
 void employee::print()
 {
 	cout << "Id: " << id << endl;
@@ -143,28 +116,6 @@ void employee::print()
 	cout << endl;
 }
 
-/*
-    Гишүүн ажилчны мэдээлэл
-
-    Params:
-    void
-
-    Return:
-    void
-*/
-void employee::read()
-{
-}
-
-/*
-    Гишүүн ажилчны цалинг ажилласан цагаар нь бодож буцаана.
-
-    Params:
-    void
-
-    Return:
-    void
-*/
 float employee::calculate_salary()
 {
 	float salary = worked_hour * 100;
@@ -175,29 +126,11 @@ float employee::calculate_salary()
 	return salary;
 }
 
-/*
-    Захирлын цалинг бодох
-
-    Params:
-    void
-
-    Return:
-    void
-*/
 float employee::calculate_salary_ceo()
 {
 	return worked_hour * 50;
 }
 
-/*
-    Гишүүн ажилчны ажилласан цагийг нэмнэ
-
-    Params:
-    float hour - Ажилчингын ажилсн цаг
-
-    Return:
-    bool - Зөв утга уруулсан үед 1 бусад үед 0
-*/
 bool employee::add_worked_hour(float hour)
 {
 	if (hour > 0 && hour < 24)
@@ -209,38 +142,61 @@ bool employee::add_worked_hour(float hour)
 	return false;
 }
 
-/*
-	Ажилчин хүснэгтийг цалингаар нь багаас ихруу эрэмблэх
-
-	Params:
-	employee employee_array[] - Эрэмблэх ажилчин хүснэгт
-
-	Return:	
-	employee *array - Эрэмблэгдсэн хүснэгтийн эхний элементийн хаяг
-*/
 void employee::sort_employee_by_salary(employee *emp_array[], int emp_array_lenght)
 {
-    for (int i = 0; i < emp_array_lenght; i++)
+    for (int emp_index = 0; emp_index < emp_array_lenght - 1; emp_index++)
     {
-        cout << "I: " <<  type_info(emp_array) << endl;
+        // Хамгийн бага цалинтай ажилчингийн индекс, цалингийн хэмжээг хадгалах хувьсагч зарласан
+        float min_salary = (emp_array[emp_index])->calculate_salary();
+        int min_index = emp_index;
+        
+        // Ажилчин хүснэгтээс хамгийн бага цалитай ажилчинг олож индекс болон цалингийн хэмжээг хадаглана
+        for(int emp_cmp_index = emp_index + 1; emp_cmp_index < emp_array_lenght; emp_cmp_index++)
+        {
+            if (min_salary > emp_array[emp_cmp_index]->calculate_salary() )
+            {
+                min_salary = emp_array[emp_cmp_index]->calculate_salary();
+                min_index = emp_cmp_index;
+            }
+        }
+
+        // Хамгийн бага цалинтай ажилчиг эхнээс нь байрандан оруулна
+        // Хамгийн бага цалинтай ажилчин болон байранд оруулах индекс адилхаг үед сольхгүй
+        if (min_index != emp_index)
+        {
+            employee *temp = emp_array[min_index];
+
+            emp_array[min_index] = emp_array[emp_index];
+            emp_array[emp_index] = temp;
+        }
     }
-//    for (int emp_index = 0; emp_index < emp_array_lenght - 1; emp_index++)
-//    {
-//        float min_salary = emp_array[emp_index].calculate_salary();
-//        int min_index = 0;
-//        
-//        for(int emp_cmp_index = emp_index; emp_cmp_index < emp_array_lenght; emp_cmp_index++)
-//        {
-//            if (min_salary > emp_array[emp_cmp_index].calculate_salary() )
-//            {
-//                min_salary = emp_array[emp_cmp_index].calculate_salary();
-//                min_index = emp_cmp_index;
-//            }
-//        }
+}
 
-   //     employee temp(*emp_array[min_index]);
+void employee::sort_employee_by_name(employee *emp_array[], int emp_array_lenght)
+{
+    for (int emp_index = 0; emp_index < emp_array_lenght - 1; emp_index++)
+    {
+        // Өмнө нь байх нэрий, индексийг хадаглах хувьсагч зарласан
+        char *min_name = emp_array[emp_index]->get_name();
+        int min_index = emp_index;
+        
+        // Өмнө нь байх нэрийг олож дээрэх хувьсагчид хадгална
+        for(int emp_cmp_index = emp_index + 1; emp_cmp_index < emp_array_lenght; emp_cmp_index++)
+        {
+            if ( strcmp(min_name, emp_array[emp_cmp_index]->get_name()) > 0 )
+            {
+                min_name = emp_array[emp_cmp_index]->get_name();
+                min_index = emp_cmp_index;
+            }
+        }
+        
+        // Өмнө нь орох нэртэй ажилчинг байранд нь оруулж, солигдож буй ажилчид өөрийн утгаа өгнө
+        if (min_index != emp_index)
+        {
+            employee *temp = emp_array[min_index];
 
-   //     emp_array[min_index] = emp_array[emp_index];
-   //     emp_array[emp_index] = &temp;
-//    }
+            emp_array[min_index] = emp_array[emp_index];
+            emp_array[emp_index] = temp;
+        }
+    }
 }

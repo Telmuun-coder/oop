@@ -1,7 +1,15 @@
+#ifndef EMPPLOYEE_H
+#define EMPPLOYEE_H
+
 #include <iostream>
+
 using namespace std;
 class employee
 {
+  public:
+    // Ажилчны нийт тоо
+    static int id_number;
+
   private:
 	// Гишүүн ажилчны дугаар
 	int id;
@@ -15,7 +23,6 @@ class employee
   public:
 	/*
 		Анхдагч байгуулагч функц
-		id-т 0
 		name-т Default
 		position-т Employee
 		worked_hour-т 0.0
@@ -27,7 +34,10 @@ class employee
 	employee();
 
     /*
-     
+        Хуудагч байгуулагч нэг ажилчингий мэдээлэлийг нөгөө ажилчинд өгнө
+
+        Param:
+        employee &emp - Хуулах ажилчингийн хаяг
     */
     employee(const employee &emp);
 
@@ -39,17 +49,26 @@ class employee
 		char e_name[] - шинээр үүсгэж буй ажилчингийн нэр
 		char e_position[] - шинээр үүсгэж буй ажилчингийн албан тушаал
 	*/
-	employee(int e_id, const char e_name[], const char e_position[], float e_worked_hour = 0.0);
+	employee(const char e_name[], const char e_position[], float e_worked_hour = 0.0);
 	
 
 	/*
 		Устгагч функц
 
 		ажилчингийн new гээр нөөцөлсөн name, position-г delete оператор ашиглан чөлөөлнө.
-		Түүний дараа утсаж буй ажилчинд "Goodbye [name]!" гэж хэвлэнэ.
 	*/
 	~employee();
 
+    /*
+        Ажилчдын тоог буцааж өгнө
+
+		Params:
+		void
+
+		Return:
+		void
+    */
+    static int get_id_number();
 	/*
 		Гишүүн ажилчингийн дугаарыг буцааж өгнө
 
@@ -95,17 +114,6 @@ class employee
 	float get_worked_hour();
 
 	/*
-		Гишүүн ажилчингийн дугаарыг өөрчилнө
-
-		Params:
-		int e_id - шинээр өөрчлөх гишүүн ажилчингийн дугаар
-
-		Return:
-		void
-	*/
-	void set_id(int e_id);
-
-	/*
 		Гишүүн ажилчингийн нэрийг өөрчилнө
 
 		Params:
@@ -139,17 +147,6 @@ class employee
 	void set_worked_hour(float e_worked_hour);
 
 	/*
-		Гишүүн ажилчинд анхны утга оноож өгнө
-
-		Params:
-		void
-
-		Return:
-		void
-	*/
-	void init();
-
-	/*
 		Гишүүн ажилчны мэдээлэлийг дэлгэцэнд хэвлэнэ
 
 		Params:
@@ -159,17 +156,6 @@ class employee
 		void
 	*/
 	void print();
-
-	/*
-		Гишүүн ажилчны мэдээлэлийг гараас авна
-
-		Params:
-		void
-
-		Return:
-		void
-	*/
-	void read();
 
 	/*
 		Гишүүн ажилчны цалинг ажилласан цагаар нь бодож буцаана.
@@ -198,11 +184,24 @@ class employee
 
 		Params:
 		employee employee_array[] - Эрэмблэх ажилчин хүснэгт
+        int emp_array_length - эрэмблэх ажилчин хүснэгтийн урт
 
 		Return:	
-		employee *array - Эрэмблэгдсэн хүснэгтийн эхний элементийн хаяг
+        void
 	*/
 	void sort_employee_by_salary(employee *emp_array[], int emp_array_lenght);
+
+    /*
+		Ажилчин хүснэгтийг нэрээр нь эрэмблэх
+
+		Params:
+		employee employee_array[] - Эрэмблэх ажилчин хүснэгт
+        int emp_array_length - эрэмблэх ажилчин хүснэгтийн урт
+
+		Return:	
+        void
+    */
+    void sort_employee_by_name(employee **emp_array, int emp_array_length);
 
   private:
 	/*
@@ -215,4 +214,28 @@ class employee
 		void
 	*/
 	float calculate_salary_ceo();
+
+    /*
+ 		Ажилчидын тоог нэгээр ихэсгэх
+
+		Params:
+		void
+
+		Return:
+		void
+    */
+    static void inc_id_number();
+
+	/*
+		Гишүүн ажилчны дугаарыг өөрчилнө
+
+		Params:
+		int e_id - шинээр өөрчлөх гишүүн ажилчингийн дугаар
+
+		Return:
+		void
+	*/
+	void set_id(int e_id);
 };
+
+#endif
