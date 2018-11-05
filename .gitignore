@@ -39,7 +39,9 @@
 
 # not ignore lab folder
 !lab*/
+!inheritancve/*
 
 .vscode
 *.exe
 .~lock*
+
