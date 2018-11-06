@@ -4,15 +4,54 @@ public class TwoDimensionalShape extends Shape {
     // Тухайн 2 хэмжээст бие хэдэн талтайг заана
     protected int numberOfSide;
     // Нэг талын утыг заана
-    protected double sideLength;
+    protected double radius;
+    // Эхний мөр нь төв цэгийг заана
     // 2 хэмжээст бие координатын заана
     protected double coordinats[][];
 
+    public TwoDimensionalShape(String name, int numberOfSide, double radius) {
+        super(name);
+        setNumberOfSide(numberOfSide);
+        setRadius(radius);
+        if (this.numberOfSide != 1) {
+            setCoordinats(this.numberOfSide + 1);
+            calculateCoordinates();
+        } else {
+            setCoordinats(this.numberOfSide);
+        }
+    }
+
+    public TwoDimensionalShape(String name, int numberOfSide, double radius, double x, double y) {
+        super(name);
+        setNumberOfSide(numberOfSide);
+        setRadius(radius);
+        if (this.numberOfSide != 1) {
+            setCoordinats(this.numberOfSide + 1);
+            setCoordinat(0, x, y);
+            calculateCoordinates();
+        } else {
+            setCoordinats(this.numberOfSide);
+            setCoordinat(0, x, y);
+        }
+    }
+
+    public void calculateCoordinates() {
+        int row_i = 1;
+        for (int i = 0; i < 360; i += 360 / this.numberOfSide) {
+            double x = this.coordinats[0][0] + this.radius * Math.cos(Math.toRadians(i));
+            double y = this.coordinats[0][1] + this.radius * Math.sin(Math.toRadians(i));
+
+            this.setCoordinat(row_i, x, y);
+            row_i++;
+        }
+    }
+
     // Get
+
     /**
      * 2 хэмжээст дүрсийн талын тоог авна
      *
-     * @return  int   - 2 хэмжээст дүрсийн талын тоо
+     * @return int   - 2 хэмжээст дүрсийн талын тоо
      */
     public int getNumberOfSide() {
         return numberOfSide;
@@ -21,16 +60,16 @@ public class TwoDimensionalShape extends Shape {
     /**
      * 2 хэмжээст дүрсийн талын уртыг авна
      *
-     * @return  double  - 2 хэмжээст дүрсийн нэг талын урт
+     * @return double  - 2 хэмжээст дүрсийн нэг талын урт
      */
-    public double getSideLength() {
-        return sideLength;
+    public double getRadius() {
+        return radius;
     }
 
     /**
      * 2 хэмжээст дүрсийн оройн координатуудыг авна
      *
-     * @return  double  - 2 хэмжээст дүрсийн нэг талын урт
+     * @return double  - 2 хэмжээст дүрсийн нэг талын урт
      */
     public double[][] getCoordinats() {
         return coordinats;
@@ -39,50 +78,50 @@ public class TwoDimensionalShape extends Shape {
     /**
      * 2 хэмжээст дүрсийн оройн координатыг авна
      *
-     * @param   row     :int - авах координатын мөр
-     *
-     * @return  double  - 2 хэмжээст дүрсийн нэг талын урт
+     * @param row :int - авах координатын мөр
+     * @return double  - 2 хэмжээст дүрсийн нэг талын урт
      */
     public double[] getCoordinat(int row) {
         return coordinats[row];
     }
 
     // Set
+
     /**
      * Талын тоог шинэчлнэ
      *
-     * @param numberOfSide:int  - Шинээр оноогдох талын тоо
+     * @param numberOfSide:int - Шинээр оноогдох талын тоо
      */
-    public void setNumberOfSide(int numberOfSide) {
+    private void setNumberOfSide(int numberOfSide) {
         this.numberOfSide = numberOfSide;
     }
 
     /**
      * Талын уртыг шинэчлнэ
      *
-     * @param sideLength:int    - Шинээр оноогдоч талын урт
+     * @param Radius:int - Шинээр оноогдоч талын урт
      */
-    public void setSideLength(double sideLength) {
-        this.sideLength = sideLength;
+    private void setRadius(double Radius) {
+        this.radius = Radius;
     }
 
     /**
      * 2 хэмжээст дүрсийн оройн координатыг хадаглах 2 хэмжээст хүснэгт зарлах
      *
-     * @param row:int   - 2 хэмжээст дүрсийн оройн тоо
+     * @param row:int - 2 хэмжээст дүрсийн оройн тоо
      */
-    public void setCoordinats(int row) {
+    private void setCoordinats(int row) {
         this.coordinats = new double[row][2];
     }
 
     /**
      * Оройн координатид x, y-2 утга өгнө
      *
-     * @param row:int       - Хэддэх оройн цэгийг заах утга
-     * @param x:double      - x-н утга
-     * @param y:double      - y-н утга
+     * @param row:int  - Хэддэх оройн цэгийг заах утга
+     * @param x:double - x-н утга
+     * @param y:double - y-н утга
      */
-    public void setCoordinat(int row, double x, double y) {
+    private void setCoordinat(int row, double x, double y) {
         if (this.coordinats.length < 0) {
             System.out.println("First initialize coordinates!");
             return;
@@ -92,6 +131,7 @@ public class TwoDimensionalShape extends Shape {
     }
 
     // Functions!
+
     /**
      * 2 хэмжээст биен талбайг олно
      *
@@ -109,6 +149,4 @@ public class TwoDimensionalShape extends Shape {
     public double findPerimeter() {
         return 0.0;
     }
-
-
 }

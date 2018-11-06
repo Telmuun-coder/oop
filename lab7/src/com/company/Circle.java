@@ -1,84 +1,42 @@
 package com.company;
 
 public class Circle extends TwoDimensionalShape {
-    private double radius;
 
     /**
      * Тойргын анхдагч байгуулагч функц
      *
-     * Нэрыг нь Default
+     * Circle гэсэн нэртэй
      * Радиосын нь 1
-     * Талын тоог нь 1
-     * Талын уртыг нь тойргын перемерт
+     * 0,0 цэг дээр координат дээр байгуулна
      */
+//    }
     public Circle() {
-        setName("Default");
-        setRadius(1.0);
-        setNumberOfSide(1);
-        setCoordinats(getNumberOfSide());
-        setCoordinat(0, 0, 0);
-        setSideLength(findPerimeter());
+        super("Circle", 1, 1);
     }
-
-    /**
-     * Тойргын байгуулагч функц 0 0 координатид өгсөн радиусын дагуу тойрог үүсгэнэ.
-     */
-    public Circle(String name, double radius) {
-        setName(name);
-        setRadius(radius);
-        setNumberOfSide(1);
-        setCoordinats(getNumberOfSide());
-        setCoordinat(0, 0, 0);
-        setSideLength(findPerimeter());
-    }
-
     /**
      * Тойргын байгуулагч функц өгөгдсөн координат, радиусын дагуу тойрог үүсгэнэ.
+     *
+     * @param name      - Шинээр үүсгэх тойргын нэр
+     * @param radius    - Шинээр үүсгэх тойргын радиус
+     * @param x         - Шинээр үүсгэх тойргын x координат
+     * @param y         - Шинээр үүсгэх тойргын y координат
      */
     public Circle(String name, double radius, int x, int y) {
-        setName(name);
-        setRadius(radius);
-        setNumberOfSide(1);
-        setCoordinats(getNumberOfSide());
-        setCoordinat(0, x, y);
-        setSideLength(findPerimeter());
+        super(name, 1, radius, x, y);
     }
 
-    // Get
-
     /**
-     * Тойргийн радиусыг буцаана
+     * Тойргын талбайг буцаана
      *
-     * @return double   - Тойргийг радиус
-     */
-    public double getRadius() {
-        return radius;
-    }
-
-    // Set
-    /**
-     * Тойргийн радиусыг өөрчилнө
-     *
-     * @param radius:double - Шинээр оноох тойргийн радиус
-     */
-    public void setRadius(double radius) {
-        if (radius <= 0) {
-            radius = 1;
-        }
-        this.radius = radius;
-    }
-
-    // Functions
-    /**
-     *
-     * @return
+     * @return  double - Тойргын талбай
      */
     public double findArea() {
         return 3.141592653589793 * radius * radius;
     }
     /**
+     * Тойргын преметерийг буцаана
      *
-     * @return
+     * @return  double - Тойргын преметер
      */
     public double findPerimeter() {
         return 2 * 3.141592653589793 * radius;

@@ -4,6 +4,11 @@ public class Main {
 
     public static void main(String[] args) {
         Circle a = new Circle();
-        System.out.println(a.getCoordinat(0)[1]);
+        Square b = new Square();
+        Triangle c = new Triangle();
+
+        System.out.println(a.getName() + " Area: " + a.findArea());
+        System.out.println(b.getName() + " Area: " + b.findArea());
+        System.out.println(c.getName() + " Area: " + c.findArea());
     }
 }

@@ -4,6 +4,10 @@ public class Shape {
     // Дүрсийн нэр
     protected String name;
 
+    public Shape(String name) {
+        setName(name);
+    }
+
     // Get
     /**
      * Дүрсийн нэрийг авна
