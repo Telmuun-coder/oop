@@ -41,6 +41,6 @@ public class Triangle extends TwoDimensionalShape {
      * @return  double - Зөв гурвалжингийн преметер
      */
     public double findPerimeter() {
-        return 3 * getRadius();
+        return 3 * Math.sqrt(3.0) * getRadius();
     }
 }

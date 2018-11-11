@@ -31,7 +31,7 @@ public class Square extends TwoDimensionalShape {
      * @return  double - Тойргын талбай
      */
     public double findArea() {
-        return getRadius() * getRadius();
+        return 2 * getRadius() * getRadius();
     }
 
     /**

@@ -4,6 +4,18 @@ abstract class Shape {
     // Дүрсийн нэр
     private String name;
 
+    /**
+     * Анхдагч байгуулагч функц Shape гэсэн нэртэй дүрс үүсгэх
+     */
+    Shaoe() {
+        setName("Shape");
+    }
+
+    /**
+     * Прамертэй байгуулагч функц дүрсд нэр олгнр
+     * 
+     * @param name  - Шинээр үүсэх дүрсэд нэр өгнө
+     */
     Shape(String name) {
         setName(name);
     }

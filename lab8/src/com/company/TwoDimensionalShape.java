@@ -9,6 +9,16 @@ abstract class TwoDimensionalShape extends Shape {
     // 2 хэмжээст бие координатын заана
     private double coordinates[][];
 
+    /**
+     * 0, 0 дээр төвтэй 1 радиустай тойрог үүсгнэ
+     */
+    TwoDimensionalShape() {
+        super("Shape");
+        setNumberOfSide(1);
+        setRadius(1);
+        setCoordinates(this.numberOfSide);
+    }
+
     TwoDimensionalShape(String name, int numberOfSide, double radius) {
         super(name);
         setNumberOfSide(numberOfSide);
@@ -21,6 +31,15 @@ abstract class TwoDimensionalShape extends Shape {
         }
     }
 
+    /**
+     * Праметртэй байгуулагч фунцк энэ нь хэрэглэгчээс авсан нэр, талын тоо болон төвөөс хэрхол зайтайг авсны дараа x, y дээр тойрог үүсгнэч
+     *
+     * @param name          - Шинээх үүсэх дүрсийн нэр
+     * @param numberOfSide  - Шинээх үүсэх дүрсийн талын тоо
+     * @param radius        - Шинээх үүсэх дүрсийн зай
+     * @param x             - Шинээх үүсэх дүрсийн x тэхлэнийн байршил
+     * @param y             - Шинээх үүсэх дүрсийн y тэхлэнийн байршил
+     */
     TwoDimensionalShape(String name, int numberOfSide, double radius, double x, double y) {
         super(name);
         setNumberOfSide(numberOfSide);
@@ -35,6 +54,9 @@ abstract class TwoDimensionalShape extends Shape {
         }
     }
 
+    /**
+     * x, y төвтэй дүрсийн оройн цэгүүдийг олно.
+     */
     private void calculateCoordinates() {
         int row_i = 1;
         for (int i = 0; i < 360; i += 360 / this.numberOfSide) {
@@ -48,8 +70,9 @@ abstract class TwoDimensionalShape extends Shape {
 
 
     /**
-     *
-     * @param shapes
+     * Дүрсүүдийг багаас нь их талбай рүү нь эрэмбдэх.
+     * 
+     * @param shapes    - Эрэмблэх хоёр хэмжээст дүрсүүд
      */
     static void sortShapesByArea(TwoDimensionalShape[] shapes) {
         for (int i = 0; i < shapes.length; i++) {
