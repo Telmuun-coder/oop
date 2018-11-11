@@ -40,6 +40,6 @@ public class Square extends TwoDimensionalShape {
      * @return  double - Тойргын преметер
      */
     public double findPerimeter() {
-        return 4 * getRadius();
+        return 4 * Math.sqrt(2.0) * getRadius();
     }
 }

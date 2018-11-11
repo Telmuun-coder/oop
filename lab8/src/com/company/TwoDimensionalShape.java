@@ -7,7 +7,7 @@ abstract class TwoDimensionalShape extends Shape {
     private double radius;
     // Эхний мөр нь төв цэгийг заана
     // 2 хэмжээст бие координатын заана
-    private double coordinates[][];
+    private Point[] coordinates;
 
     /**
      * 0, 0 дээр төвтэй 1 радиустай тойрог үүсгнэ
@@ -17,6 +17,7 @@ abstract class TwoDimensionalShape extends Shape {
         setNumberOfSide(1);
         setRadius(1);
         setCoordinates(this.numberOfSide);
+        setCoordinate(0, 0, 0);
     }
 
     TwoDimensionalShape(String name, int numberOfSide, double radius) {
@@ -25,9 +26,11 @@ abstract class TwoDimensionalShape extends Shape {
         setRadius(radius);
         if (this.numberOfSide != 1) {
             setCoordinates(this.numberOfSide + 1);
+            setCoordinate(0, 0, 0);
             calculateCoordinates();
         } else {
             setCoordinates(this.numberOfSide);
+            setCoordinate(0, 0, 0);
         }
     }
 
@@ -47,6 +50,7 @@ abstract class TwoDimensionalShape extends Shape {
         if (this.numberOfSide != 1) {
             setCoordinates(this.numberOfSide + 1);
             setCoordinate(0, x, y);
+
             calculateCoordinates();
         } else {
             setCoordinates(this.numberOfSide);
@@ -60,8 +64,8 @@ abstract class TwoDimensionalShape extends Shape {
     private void calculateCoordinates() {
         int row_i = 1;
         for (int i = 0; i < 360; i += 360 / this.numberOfSide) {
-            double x = this.coordinates[0][0] + this.radius * Math.cos(Math.toRadians(i));
-            double y = this.coordinates[0][1] + this.radius * Math.sin(Math.toRadians(i));
+            double x = this.coordinates[0].x + this.radius * Math.cos(Math.toRadians(i));
+            double y = this.coordinates[0].y + this.radius * Math.sin(Math.toRadians(i));
 
             this.setCoordinate(row_i, x, y);
             row_i++;
@@ -112,7 +116,7 @@ abstract class TwoDimensionalShape extends Shape {
      *
      * @return double  - 2 хэмжээст дүрсийн нэг талын урт
      */
-    public double[][] getCoordinates() {
+    public Point[] getCoordinates() {
         return coordinates;
     }
 
@@ -122,7 +126,7 @@ abstract class TwoDimensionalShape extends Shape {
      * @param row :int - авах координатын мөр
      * @return double  - 2 хэмжээст дүрсийн нэг талын урт
      */
-    public double[] getCoordinate(int row) {
+    public Point getCoordinate(int row) {
         return coordinates[row];
     }
 
@@ -152,7 +156,7 @@ abstract class TwoDimensionalShape extends Shape {
      * @param row:int - 2 хэмжээст дүрсийн оройн тоо
      */
     private void setCoordinates(int row) {
-        this.coordinates = new double[row][2];
+        this.coordinates = new Point[row];
     }
 
     /**
@@ -163,12 +167,9 @@ abstract class TwoDimensionalShape extends Shape {
      * @param y:double - y-н утга
      */
     private void setCoordinate(int row, double x, double y) {
-        if (this.coordinates.length < 0) {
-            System.out.println("First initialize Coordinatees!");
-            return;
-        }
-        this.coordinates[row][0] = x;
-        this.coordinates[row][1] = y;
+        this.coordinates[row] = new Point();
+        this.coordinates[row].x = x;
+        this.coordinates[row].y = y;
     }
 
     // Functions!

@@ -7,7 +7,7 @@ abstract class Shape {
     /**
      * Анхдагч байгуулагч функц Shape гэсэн нэртэй дүрс үүсгэх
      */
-    Shaoe() {
+    Shape() {
         setName("Shape");
     }
 

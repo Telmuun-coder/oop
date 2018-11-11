@@ -8,7 +8,7 @@ public class Main {
 
 
         for (int i = 0; i < size; i++) {
-            int n = (int)(Math.random() * 100 + 1);
+            int n = (int) (Math.random() * 100 + 1);
             double radius = Math.random() * 50 + 1;
 
             switch (n % 3) {
