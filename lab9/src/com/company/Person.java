@@ -7,49 +7,16 @@ public class Person {
     private String SSN;
     private int age;
 
-    public Spouse spource;
-    public Collection<Child> children;
-    public Division division;
-    public Collection<JobDescription> jobDescriptions;
-
     Person() {
-        // Заавал нэг салбарт байна.
+        this.setName("Default");
+        this.setSSN("0000");
+        this.setAge(1);
     }
 
-    void marry(Spouse bride) {
-        if (this.spource != null) {
-            System.out.println("Already Married!");
-            return;
-        }
-        this.spource = new Spouse();
-        this.spource = bride;
-    }
-
-    void divorce() {
-        if (this.spource == null){
-            System.out.println("You are not married!");
-            return;
-        }
-        this.spource = null;
-    }
-
-    int countSpource() {
-        if (this.spource == null){
-            return 0;
-        }
-        return 1;
-    }
-
-    void addChild(Child child) {
-        this.children.add(child);
-    }
-
-    void removeChild(String name) {
-        this.children.removeIf((Child child) -> child.getName() == name);
-    }
-
-    int countChild() {
-        return this.children.size();
+    Person(String name, String SSN, int age) {
+        this.setName(name);
+        this.setSSN(SSN);
+        this.setAge(age);
     }
 
     public String getName() {
@@ -73,6 +40,9 @@ public class Person {
     }
 
     public void setAge(int age) {
+        if (age < 0) {
+            age = 0;
+        }
         this.age = age;
     }
 }
