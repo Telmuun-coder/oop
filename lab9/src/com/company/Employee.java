@@ -98,7 +98,6 @@ public class Employee extends Person {
         if (this.jobDescriptions == null) {
             this.jobDescriptions = new ArrayList<JobDescription>();
         }
-        System.out.println(jobDescription.getDescription());
         this.jobDescriptions.add(jobDescription);
     }
 
@@ -136,5 +135,22 @@ public class Employee extends Person {
 
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
+    }
+
+    public String toString() {
+        String name = "*************************\n";
+        name += "Name: " + this.getName() + "\n";
+        name += "SSN: " + this.getSSN() + "\n";
+        name += "Age: " + this.getAge() + "\n";
+        name += "\n" + "Spouse" + "\n";
+        name += "Name: " + this.spource.getName() + "\n";
+        name += "\n" + "Children" + "\n";
+
+        for (Child temp : this.children) {
+            name += "Name: " + temp.getName() + "\n";
+        }
+        name += "*************************\n";
+
+        return name;
     }
 }
