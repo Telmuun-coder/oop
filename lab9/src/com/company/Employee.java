@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
@@ -9,36 +10,42 @@ public class Employee extends Person {
     private Date startDate;
 
     public Spouse spource;
-    public Collection<Child> children;
+    public ArrayList<Child> children;
     public Division division;
-    public Collection<JobDescription> jobDescriptions;
+    public ArrayList<JobDescription> jobDescriptions;
 
     Employee() {
         super();
 
+        this.setCompanyID("0");
+        this.setTitle("Employee");
+        this.setStartDate(new Date());
+
         // Заавал нэг салбартай байна
-        addDivision(new Division());
+        this.addDivision(new Division());
         // Заавал нэг болон түүнээс дээш ажилын тайлбартай байна
-        // 
-        adDescription(new JobDescription());
+        this.addJobDescription(new JobDescription());
     }
 
-    Employee(String name, String SSN, int age, Division division, JobDescription jobDescription) {
+    Employee(String name, String SSN, int age, String companyID, String title, Date startDate, Division division, JobDescription jobDescription) {
         super(name, SSN, age);
 
+        this.setCompanyID(companyID);
+        this.setTitle(title);
+        this.setStartDate(startDate);
+
         // Заавал нэг салбартай байна
-        addDivision(new Division(division));
+        this.addDivision(division);
         // Заавал нэг болон түүнээс дээш ажилын тайлбартай байна
-        addDescription(new JobDescription(jobDescription));
-        // 
+        this.addJobDescription(jobDescription);
     }
 
-    marry(Spouse bride) {
+    void marry(Spouse bride) {
         if (this.spource != null) {   
             System.out.println("Already Married!");
             return;
         }
-        this.spource = new Spouse(bride);
+        this.spource = bride;
     }
 
     void divorce() {
@@ -57,6 +64,9 @@ public class Employee extends Person {
     }
 
     void addChild(Child child) {
+        if (this.children == null) {
+            this.children = new ArrayList<Child>();
+        }
         this.children.add(child);
     }
 
@@ -73,11 +83,11 @@ public class Employee extends Person {
             System.out.println("Already Has Division!");
             return;
         }
-        this.division = new Division(division);
+        this.division = division;
     }
 
     void swapDivision(Division division) {
-        this.division = new Division(division);
+        this.division = division;
     }
 
     int countDivision() {
@@ -85,6 +95,10 @@ public class Employee extends Person {
     }
 
     void addJobDescription(JobDescription jobDescription) {
+        if (this.jobDescriptions == null) {
+            this.jobDescriptions = new ArrayList<JobDescription>();
+        }
+        System.out.println(jobDescription.getDescription());
         this.jobDescriptions.add(jobDescription);
     }
 

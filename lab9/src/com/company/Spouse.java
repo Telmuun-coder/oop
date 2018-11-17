@@ -1,29 +1,25 @@
 package com.company;
 
+import java.util.Date;
+
 public class Spouse extends Person {
-    private String anniversaryDate;
+    private Date anniversaryDate;
 
     Spouse() {
-        super("DEFAULT CHILD", "DEFAULT CHILD SSN", 1);
+        super("DEFAULT Spouse", "DEFAULT Spouse SSN", 20);
     }
 
-    Spouse(String name, String SSN, int age, Division division, JobDescription jobDescription) {
+    Spouse(String name, String SSN, int age, Date anniversaryDate) {
         super(name, SSN, age);
 
-        // Заавал нэг салбартай байна
-        addDivision(new Division(division));
-        // Заавал нэг болон түүнээс дээш ажилын тайлбартай байна
-        // 
-        //
-        adJobDescription(new JobDescription(jobDescription));
-        //
+        setAnniversaryDate(anniversaryDate);
     }
 
-    public String getAnniversaryDate() {
+    public Date getAnniversaryDate() {
         return anniversaryDate;
     }
 
-    public void setAnniversaryDate(String anniversaryDate) {
+    public void setAnniversaryDate(Date anniversaryDate) {
         this.anniversaryDate = anniversaryDate;
     }
 }
