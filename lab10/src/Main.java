@@ -12,9 +12,13 @@ public class Main {
     * int length();    //жагсаалтын уртыг буцаана
     */
     public static void main(String[] args) {
-        LinkedList<Integer> a =new LinkedList<Integer>(5);
-        a.add(9);
-        a.insert(6, 0);
-        System.out.println(a.head.value);
+        LinkedList<Integer> a =new LinkedList<Integer>(10);
+        a.add(20);
+        a.add(30);
+        a.add(40);
+        a.delete(9);
+//        a.insert(6, 0);
+        System.out.println(a.get(a.length - 1));
+        System.out.println(a.length_rec());
     }
 }

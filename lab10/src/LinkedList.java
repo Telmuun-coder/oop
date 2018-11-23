@@ -27,7 +27,7 @@ public class LinkedList<T> {
     }
 
     public void insert(T value, int index) {
-        if (index < this.length) {
+        if (index < this.length - 1) {
             this.head = insert(this.head, value, index);
             this.length++;
         } else {
@@ -45,4 +45,63 @@ public class LinkedList<T> {
 
         return current;
     }
+
+    public T get(int index) {
+        if (index > this.length - 1)
+            return null;
+
+        Node <T> current = this.head;
+
+        while (index != 0) {
+            current = current.next_node;
+            index--;
+        }
+
+        return current.value;
+    }
+
+    public int length() {
+        return length;
+    }
+
+    public int length_rec() {
+        return length_rec(this.head);
+    }
+
+    void delete(int index) {
+        if (index > this.length)
+            index = this.length - 1;
+
+        this.length--;
+
+        if (index == 0) {
+            Node temp = this.head;
+            this.head = temp.next_node;
+            temp = null;
+            return;
+        }
+
+        delete(this.head, index);
+    }
+
+    private Node<T> delete(Node<T> current, int index) {
+        if (index == 1) {
+            Node <T> temp = current.next_node;
+            current.next_node = temp.next_node;
+            temp = null;
+        } else {
+            current.next_node = delete(current.next_node, --index);
+        }
+
+        return current;
+    }
+
+    private int length_rec(Node current) {
+        if(current != null) {
+            return 1 + length_rec(current.next_node);
+        } else {
+            return 0;
+        }
+    }
+
 }
