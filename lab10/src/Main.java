@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Main {
     /*
     Template буюу загвар класс ашиглан дурын төрлийн
@@ -11,6 +13,7 @@ public class Main {
     * void delete(int index); // i -р элементийг устгана
     * int length();    //жагсаалтын уртыг буцаана
     */
+
     public static void main(String[] args) {
         LinkedList<Integer> a =new LinkedList<Integer>(10);
         a.add(20);
