@@ -1,6 +1,7 @@
 #if !defined(UNIVERSE_H)
 #define UNIVERSE_H
 
+#include <math.h>
 #include <vector>
 #include "Body.h"
 
@@ -14,8 +15,10 @@ class Universe {
 
     void update_universe();
     double find_horizontal_force(std::string name);
+    double find_vertical_force(std::string name);
     double find_gravitational_force(Body main, Body with);
     double find_distance(Body main, Body with);
+    double find_angle(Body main, Body with);
 };
 
 #endif  // UNIVERSE_H

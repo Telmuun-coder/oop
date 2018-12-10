@@ -54,4 +54,12 @@ double Universe::find_distance(Body main, Body with) {
     return sqrt(pow(x, 2) + pow(y, 2));
 }
 
+double Universe::find_angle(Body main, Body with) {
+    double delta_y = with.position.y - main.position.y;
+    double delta_x = with.position.x - main.position.x;
+
+    double in_radius = atan2(delta_y, delta_x);
+    return (in_radius > 0) ? in_radius : 2 * M_PI + in_radius;
+}
+
 #endif  // UNIVERSE_CPP
