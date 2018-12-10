@@ -13,7 +13,7 @@ class Universe {
     Universe();
     Universe(std::string file);
 
-    void update_universe();
+    void update_universe(double t);
     double find_horizontal_force(std::string name);
     double find_vertical_force(std::string name);
     double find_gravitational_force(Body main, Body with);

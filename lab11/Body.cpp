@@ -24,20 +24,20 @@ void Body::update_velocity_by_acceleration(double horizontal_force, double verti
     this->velocity.y = this->velocity.y + vertical_force / this->mass * t;
 }
 
-double Body::calculate_horizontal_position(double horizontal_force, double t) {
+void Body::update_horizontal_position(double horizontal_force, double t) {
     // s = vt + 0.5at^2
     double a = horizontal_force / this->mass;
-    return this->velocity.x * t + 0.5 * a * std::pow(t, 2);
+    this->position.x = this->position.x + (this->velocity.x * t + 0.5 * a * std::pow(t, 2));
 }
 
-double Body::calculate_vertical_position(double vertical_force, double t) {
+void Body::update_vertical_position(double vertical_force, double t) {
     // s = vt + 0.5at^2
     double a = vertical_force / this->mass;
-    return this->velocity.y * t + 0.5 * a * std::pow(t, 2);
+    this->position.x = this->position.x + (this->velocity.y * t + 0.5 * a * std::pow(t, 2));
 }
 
 void Body::print_body() {
-    std::cout << name << ", " << position.x << ", " << position.y << ", " << velocity.x << ", " << velocity.y << ", " << mass << std::endl;
+    std::cout << name << "    px: " << position.x << "    py: " << position.y << "    vx: " << velocity.x << "    vy: " << velocity.y << "    m: " << mass << std::endl;
 }
 
 #endif  // BODY_CPP

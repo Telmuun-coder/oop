@@ -24,8 +24,8 @@ class Body {
 
     // Methods
     void update_velocity_by_acceleration(double horizontal_force, double vertical_force, double t);
-    double calculate_horizontal_position(double horizontal_force, double t);
-    double calculate_vertical_position(double vertical_force, double t);
+    void update_horizontal_position(double horizontal_force, double t);
+    void update_vertical_position(double vertical_force, double t);
     void print_body();
 };
 
