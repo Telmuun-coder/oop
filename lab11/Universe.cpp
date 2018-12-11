@@ -34,9 +34,9 @@ Universe::Universe(std::string file) {
 void Universe::update_universe(double t) {
     for (Body &body : this->bodies) {
         // draw(current position of bodies)
-        std::cout << "BEFORE CHANGE: " << std::endl;
-        body.print_body();
-        std::cout << "+++++++++++++++" << std::endl;
+        // std::cout << "BEFORE CHANGE: " << std::endl;
+        // body.print_body();
+        // std::cout << "+++++++++++++++" << std::endl;
 
         double force_x = find_horizontal_force(body.name);
         double force_y = find_vertical_force(body.name);
@@ -44,11 +44,11 @@ void Universe::update_universe(double t) {
         body.update_vertical_position(force_y, t);
         body.update_velocity_by_acceleration(force_x, force_y, t);
 
-        std::cout << "AFTER CHANGE: " << std::endl;
-        std::cout << "FORCE X: " << force_x << " FORCE Y:" << force_y << std::endl;
-        body.print_body();
-        std::cout << "--------------" << std::endl
-                  << std::endl;
+        // std::cout << "AFTER CHANGE: " << std::endl;
+        // std::cout << "FORCE X: " << force_x << " FORCE Y:" << force_y << std::endl;
+        // body.print_body();
+        // std::cout << "--------------" << std::endl
+        //           << std::endl;
     }
 }
 
@@ -67,6 +67,7 @@ double Universe::find_horizontal_force(std::string name) {
 
                 horizontal_force += force * cos(angle);
             }
+            return horizontal_force;
         }
     }
     return horizontal_force;
@@ -86,6 +87,7 @@ double Universe::find_vertical_force(std::string name) {
 
                 vertical_force += force * sin(angle);
             }
+            return vertical_force;
         }
     }
     return vertical_force;

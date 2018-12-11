@@ -33,7 +33,7 @@ void Body::update_horizontal_position(double horizontal_force, double t) {
 void Body::update_vertical_position(double vertical_force, double t) {
     // s = vt + 0.5at^2
     double a = vertical_force / this->mass;
-    this->position.x = this->position.x + (this->velocity.y * t + 0.5 * a * std::pow(t, 2));
+    this->position.y = this->position.y + (this->velocity.y * t + 0.5 * a * std::pow(t, 2));
 }
 
 void Body::print_body() {
