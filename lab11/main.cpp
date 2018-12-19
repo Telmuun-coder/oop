@@ -9,8 +9,7 @@
 //     // Compile with:
 //     g++ Body.cpp -c && g++ Universe.cpp -c && g++ main.cpp -o main.exe
 //     Universe.o Body.o && ./main.exe g++ Body.cpp -c && g++ Universe.cpp -c &&
-//     g++ main.cpp -o main.exe -lglut -lGLU -lGL Universe.o Body.o &&
-//     ./main.exe g++ Body.cpp -c && g++ Universe.cpp -c && openglc main.cpp
+//     g++ main.cpp -o main.exe -lglut -lGLU -lGL Universe.o Body.o && ./main.exe g++ Body.cpp -c && g++ Universe.cpp -c && openglc main.cpp
 //     main.exe Universe.o Body.o && ./main.exe Universe uni =
 //     Universe("./files/nbodys.txt");
 
